@@ -31,7 +31,7 @@ const AddItemForm = () => {
     data.append('image', imageFile); // The backend expects 'image'
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/all-items`, {
+      const response = await fetch(`${API_BASE_URL}/api/v1/add-items`, {
         method: 'POST',
         body: data
       });
