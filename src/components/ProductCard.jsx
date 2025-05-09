@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const ItemShowcase = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -9,7 +9,7 @@ const ItemShowcase = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/all-items')
+    fetch(`${API_BASE_URL}/api/v1/all-items`)
       .then(res => res.json())
       .then(data => {
         const reversedData = [...data].reverse();
