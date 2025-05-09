@@ -1,20 +1,22 @@
-import Item from '../Database/Item-Model.js'; // Adjust the import as necessary
+// Add-Items.js
+import Item from '../Database/Item-Model.js';
 
 async function Add_Items(req, res) {
-  const { name, description, price, image } = req.body;
+  const { name, description, price } = req.body;
+  const imageFile = req.file;
 
-  // Check if any fields are empty
-  if (!name || !description || !price || !image) {
-    return res.status(400).json({ error: 'All fields are required' });
+  if (!name || !description || !price || !imageFile) {
+    return res.status(400).json({ error: 'All fields including image are required' });
   }
 
   try {
-    // Create a new item entry using the Sequelize model
+    const imagePath = `/uploads/${imageFile.filename}`;
+
     const newItem = await Item.create({
       name,
       description,
       price,
-      image,
+      image: imagePath,
     });
 
     res.status(201).json({

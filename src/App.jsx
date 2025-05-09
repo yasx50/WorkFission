@@ -2,7 +2,7 @@ import React from 'react'
 import ItemShowcase from './components/ProductCard'
 import photo from './assets/react.svg'
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/AdditemForm';
+import AddItemForm from './components/AdditemForm';
 
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
   <>
          <Routes>
          
-            <Route path="/" element={ <Home/>} />
+            <Route path="/" element={ <AddItemForm/>} />
             <Route path="/products" element={<ItemShowcase  />} />
             {/* <Route path="/about" element={<About />} /> */}
          </Routes>

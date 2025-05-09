@@ -9,6 +9,7 @@ import cors from 'cors'
 import { connectDB } from './Database/DbConnection.js'
 
 const app = express()
+app.use('/uploads', express.static('uploads'));
 app.use(express.json())
 app.use(cors({
     credentials:true
