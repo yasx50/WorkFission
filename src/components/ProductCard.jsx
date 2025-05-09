@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const imageUrl = `${API_BASE_URL}${item.image}`;
+const imageUrl =''
 
 const ItemShowcase = () => {
   const [items, setItems] = useState([]);
@@ -126,8 +126,9 @@ const ItemShowcase = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
               >
                 <div className="relative overflow-hidden">
+                  {/* { imageUrl = `${API_BASE_URL}${item.image}`} */}
                   <img
-                    src={imageUrl}
+                    src={`${API_BASE_URL}${item.image}`}
                     alt={item.name}
                     className="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
                   />
