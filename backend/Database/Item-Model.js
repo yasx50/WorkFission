@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize';
-import sequelize from './DbConnection.js';  // Import the sequelize connection
+import sequelize from './DbConnection.js';  
 
 const Item = sequelize.define('Item', {
-  // Defining columns and their data types
+  
   
   name: {
     type: DataTypes.STRING,
@@ -22,7 +22,6 @@ const Item = sequelize.define('Item', {
   }
 });
 
-// Synchronize the model with the database (creates the table if it doesn't exist)
 Item.sync({ alter: true }).then(() => {
   console.log('Items table has been created (or updated)');
 });

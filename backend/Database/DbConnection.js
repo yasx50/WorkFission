@@ -1,24 +1,23 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Load the environment variables
+dotenv.config(); 
 
-// Initialize Sequelize with connection string (Neon)
+
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // Necessary for Neon
+      rejectUnauthorized: false, 
     },
   },
-  logging: false, // Disable SQL query logging
+  logging: false, 
 });
 
-// Function to test DB connection
 export const connectDB = async () => {
   try {
-    await sequelize.authenticate(); // Test the connection
+    await sequelize.authenticate(); 
     console.log('✅ Connected to PostgreSQL using Sequelize');
   } catch (err) {
     console.error('❌ Error connecting to PostgreSQL:', err.message);
@@ -26,4 +25,4 @@ export const connectDB = async () => {
   }
 };
 
-export default sequelize; // Export sequelize instance
+export default sequelize; 

@@ -9,13 +9,13 @@ async function Add_Items(req, res) {
   }
 
   try {
-    const imageUrl = imageFile.path; // Cloudinary returns `path` as the secure URL
+    const imageUrl = imageFile.path; 
 console.log(imageUrl)
     const newItem = await Item.create({
       name,
       description,
       price: parseFloat(price),
-      image: imageUrl, // Store Cloudinary URL in DB
+      image: imageUrl, 
     });
 
     res.status(201).json({

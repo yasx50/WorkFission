@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL 
 
 const AddItemForm = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ const AddItemForm = () => {
     data.append('name', formData.name);
     data.append('description', formData.description);
     data.append('price', formData.price);
-    data.append('image', imageFile); // The backend expects 'image'
+    data.append('image', imageFile); 
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/add-items`, {
@@ -40,7 +40,7 @@ const AddItemForm = () => {
         setStatus('Item added successfully!');
         setFormData({ name: '', description: '', price: '' });
         setImageFile(null);
-        // Reset file input
+       
         document.querySelector('input[type="file"]').value = '';
       } else {
         setStatus('Failed to add item. Try again.');
