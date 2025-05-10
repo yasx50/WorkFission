@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { upload } from '../helpers/Image-Hander.js'; // Cloudinary multer setup
+import { upload } from '../helpers/Cloudinary-Config.js'; // Cloudinary multer setup
 import Add_Items from '../helpers/Add-Items.js';
 import getAllItems from '../helpers/Fetch-Items.js';
 
