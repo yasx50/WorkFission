@@ -1,17 +1,21 @@
-import Item from '../Database/Item-Model.js'; // Adjust the path if needed
+import Item from '../Database/Item-Model.js'; // Adjust path if needed
 
 async function getAllItems(req, res) {
   try {
-    // Fetch all records from the 'Item' table
     const items = await Item.findAll();
 
-    // Check if there are items
     if (items.length === 0) {
       return res.status(404).json({ message: 'No items found' });
     }
 
-    // Return the items in the response
-    res.status(200).json(items);
+    // Construct full image URLs
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000'; // fallback
+    const updatedItems = items.map(item => ({
+      ...item.toJSON(),
+      image: `${baseUrl}/uploads/${item.image}`, // assuming item.image = filename
+    }));
+
+    res.status(200).json(updatedItems);
   } catch (error) {
     console.error('Error fetching items:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });

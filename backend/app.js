@@ -9,7 +9,14 @@ import cors from 'cors'
 import { connectDB } from './Database/DbConnection.js'
 
 const app = express()
-app.use('/uploads', express.static('uploads'));
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 app.use(express.json())
 app.use(cors({
     origin:process.env.CORS_ORIGIN,
