@@ -1,11 +1,14 @@
 import { Router } from "express";
-import { upload } from '../helpers/Image-Hander.js';
-const router = Router()
+import { upload } from '../helpers/Image-Hander.js'; // Cloudinary multer setup
+import Add_Items from '../helpers/Add-Items.js';
+import getAllItems from '../helpers/Fetch-Items.js';
 
-import Add_Items from '../helpers/Add-Items.js'
-router.route("/add-items").post(upload.single('image'), Add_Items);
+const router = Router();
 
-import getAllItems from '../helpers/Fetch-Items.js'
-router.route("/all-items").get(getAllItems)
+// Route to add a new item with image upload
+router.post("/add-items", upload.single('image'), Add_Items);
 
-export default router
+// Route to fetch all items
+router.get("/all-items", getAllItems);
+
+export default router;
