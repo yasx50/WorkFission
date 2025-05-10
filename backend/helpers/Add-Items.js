@@ -1,5 +1,4 @@
-// Add-Items.js
-import Item from '../Database/Item-Model.js';
+import Item from '../Database/Item-Model.js'; // PostgreSQL model (Sequelize or Prisma assumed)
 
 async function Add_Items(req, res) {
   const { name, description, price } = req.body;
@@ -10,18 +9,18 @@ async function Add_Items(req, res) {
   }
 
   try {
-    const imagePath = `/uploads/${imageFile.filename}`;
+    const imageUrl = imageFile.path; // Cloudinary returns `path` as the secure URL
 
     const newItem = await Item.create({
       name,
       description,
-      price,
-      image: imagePath,
+      price: parseFloat(price),
+      image: imageUrl, // Store Cloudinary URL in DB
     });
 
     res.status(201).json({
       message: 'Item added successfully',
-      item: newItem
+      item: newItem,
     });
   } catch (error) {
     console.error('Error inserting item:', error.message);
