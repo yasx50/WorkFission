@@ -1,12 +1,47 @@
-# React + Vite
+# WorkFission
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Mini E-Commerce Platform with Two Tabs
+### Add items page (Tab 1)
+![alt text](image-1.png)
+### Show items page (Tab 2)
+![alt text](image-2.png)
+### DataBase Entries (PostgreSQL)
+![alt text](image-4.png)
+### Cloudinary
+![alt text](image-5.png)
 
-Currently, two official plugins are available:
+## 🧰 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- ⚡ Vite
+- ⚛️ React
+- 💨 Tailwind CSS
 
-## Expanding the ESLint configuration
+### Backend
+- 🧠 Express.js
+- 🗃️ PostgreSQL
+- ☁️ Cloudinary
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+### first clone the project
+```
+git clone https://github.com/yasx50/WorkFission.git
+```
+
+### setup for frontend
+```
+cd WorkFission
+npm install
+npm run dev
+```
+### setup for backend
+```
+cd backend
+npm install
+node app.js
+```
+
+
+
+
+
