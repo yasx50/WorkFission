@@ -10,7 +10,7 @@ async function Add_Items(req, res) {
 
   try {
     const imageUrl = imageFile.path; // Cloudinary returns `path` as the secure URL
-
+console.log(imageUrl)
     const newItem = await Item.create({
       name,
       description,
