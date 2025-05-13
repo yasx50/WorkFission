@@ -1,7 +1,7 @@
 import Item from '../Database/Item-Model.js'; 
 import { initPinecone, index } from '../contextual-search/VectorDb-Connection.js';
 
-import embedTextONNX from './Embeddings.js';
+import getEmbeddings from './Embeddings.js';
 
 async function Add_Items(req, res) {
   const { name, description, price } = req.body;
@@ -23,7 +23,7 @@ async function Add_Items(req, res) {
   // Try Pinecone separately
   try {
   
-    const embedding = embedTextONNX(description)
+    const embedding = await getEmbeddings(description)
     console.log(embedding)
     await index.upsert([
       {

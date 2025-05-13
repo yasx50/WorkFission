@@ -1,8 +1,13 @@
 // embeddings.js
+import dotenv from "dotenv";
+dotenv.config({
+    path:'../.env'
+})
+
 import { HfInference } from '@huggingface/inference';
 
 // Replace with your actual Hugging Face API key
-const hf = new HfInference('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');
+const hf = new HfInference(process.env.HUGGING_FACE);
 
 export async function getEmbeddings(text) {
   try {
@@ -17,9 +22,9 @@ export async function getEmbeddings(text) {
     return null;
   }
 }
-
 // Example usage
 // const text = "Hugging Face provides a great collection of pre-trained models!";
 // getEmbeddings(text).then((embeddings) => {
-//   console.log('Embeddings:', embeddings);
+//     console.log('Embeddings:', embeddings);
 // });
+export default getEmbeddings
