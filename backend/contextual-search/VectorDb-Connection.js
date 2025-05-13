@@ -3,7 +3,7 @@ import { Pinecone } from '@pinecone-database/pinecone';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const pc = new Pinecone({ apiKey: 'pcsk_2GhjgD_Lnnvc3kYvXHX1H7QoP8uA1ZRD4xMxisUD4Yio57E7j3UTJP19htdKCbNv3fWJ4v'});
+const pc = new Pinecone({ apiKey: process.env.VECTOR_DB_URL});
 
 const indexName = 'quickstart-js';
 
