@@ -1,6 +1,6 @@
 import { index } from '../contextual-search/VectorDb-Connection.js';
 
-async function search(req, res){
+ async function search(req, res){
   const query = req.query.q;
 
   try {
@@ -16,3 +16,4 @@ async function search(req, res){
     res.status(500).json({ error: 'Search error' });
   }
 };
+export default search;
