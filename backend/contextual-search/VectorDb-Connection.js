@@ -8,20 +8,32 @@ const pc = new Pinecone({ apiKey: 'pcsk_2GhjgD_Lnnvc3kYvXHX1H7QoP8uA1ZRD4xMxisUD
 const indexName = 'quickstart-js';
 
 // Ensure the index is created and ready (run once or on app start)
+
+
 export const initPinecone = async () => {
-  const exists = await pc.listIndexes().then(res => res.includes(indexName));
-  if (!exists) {
-    await pc.createIndexForModel({
-      name: indexName,
-      cloud: 'aws',
-      region: 'us-east-1',
-      embed: {
-        model: 'llama-text-embed-v2',
-        fieldMap: { text: 'text' },
-      },
-      waitUntilReady: true,
-    });
+  try {
+    const existingIndexes = await pc.listIndexes();
+    const indexExists = existingIndexes.indexes.some(i => i.name === indexName);
+
+    if (!indexExists) {
+      await pc.createIndexForModel({
+        name: indexName,
+        cloud: 'aws',
+        region: 'us-east-1',
+        embed: {
+          model: 'llama-text-embed-v2',
+          fieldMap: { text: 'text' },
+        },
+        waitUntilReady: true,
+      });
+      console.log('Index created successfully.');
+    } else {
+      console.log('Index already exists, skipping creation.');
+    }
+  } catch (err) {
+    console.error('Error initializing Pinecone:', err);
   }
 };
+
 
 export const index = pc.index(indexName);
