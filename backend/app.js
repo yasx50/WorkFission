@@ -7,6 +7,7 @@ dotenv.config({
 import express from 'express'
 import cors from 'cors'
 import { connectDB } from './Database/DbConnection.js'
+import { initPinecone } from './contextual-search/VectorDb-Connection.js'
 
 const app = express()
 import path from 'path';
@@ -22,6 +23,7 @@ app.use(cors({
     origin:process.env.CORS_ORIGIN,
     credentials:true
 }))
+await initPinecone()
 
 
 
