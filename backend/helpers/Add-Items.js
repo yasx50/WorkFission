@@ -26,12 +26,17 @@ async function Add_Items(req, res) {
     const embedding = await getEmbeddings(description)
     console.log(embedding)
     await index.upsert([
-      {
-        id: `product-${Date.now()}`,
-        values: embedding, // Dummy or real vector
-        metadata: { name, price },
-      },
-    ]);
+  {
+    id: `product-${newItem.id}`,  // or just use newItem.id as string
+    values: embedding,
+    metadata: {
+      id: newItem.id, // <- Add this
+      name,
+      price
+    },
+  },
+]);
+
   } catch (pineconeErr) {
     console.error('Failed to add to Pinecone:', pineconeErr.message);
     // Continue without crashing
